@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\http\Controllers\TaskController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [TaskController::class, 'fetchAllTasks'])->name('index');
 
-Route::get('/index', function () {
-    return view('index');
-});
+Route::get('/create', [TaskController::class, 'createTask'])->name('create');
+
+Route::post('/addTask', [TaskController::class, 'addTask'])->name('addTask');
